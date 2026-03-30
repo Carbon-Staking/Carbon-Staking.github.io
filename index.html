@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Carbon Staking — How It Works, Rewards, Supported Assets &amp; Guide (2026)</title>
+  <meta name="description" content="Complete Carbon Staking guide (2026): how Carbon staking works, supported assets and chains, staking rewards and APY, smart contract security, how to stake step-by-step, risks, comparison with other staking platforms, and a deep FAQ for stakers.">
+  <meta name="author" content="Crypto Finance Experts">
+  <link rel="canonical" href="https://carbon-staking-guide.example.com/">
+  <link rel="icon" type="image/png" href="lid.png">
+
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://carbon-staking-guide.example.com/">
+  <meta property="og:title" content="Carbon Staking — Staking Guide: Rewards, Assets &amp; How It Works (2026)">
+  <meta property="og:description" content="Practical Carbon Staking guide: how to stake, supported assets, APY mechanics, smart contract security, risks, and step-by-step tutorial.">
+  <meta property="og:image" content="cover.png">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Carbon Staking — Staking Guide (2026)">
+  <meta name="twitter:description" content="How Carbon Staking works, supported assets, reward mechanics, security, and complete staking tutorial for 2026.">
+
+  <style>
+    :root {
+      --g:    #16A34A;
+      --g2:   #15803D;
+      --g3:   #166534;
+      --ga:   #4ADE80;
+      --gb:   #86EFAC;
+      --gs:   #DCFCE7;
+
+      --ink:   #F0FDF4;
+      --sub:   #BBF7D0;
+      --muted: #94A3B8;
+      --dim:   #64748B;
+
+      --bg:    #030A05;
+      --card:  rgba(255,255,255,.028);
+      --line:  rgba(255,255,255,.07);
+      --lg:    rgba(22,163,74,.13);
+
+      --ok:   #4ADE80;
+      --warn: #FBBF24;
+      --err:  #F87171;
+
+      --r:  12px;
+      --rl: 18px;
+      --gap: 1.2rem;
+      --sh: 0 8px 28px rgba(0,0,0,.58);
+      --shg: 0 4px 22px rgba(22,163,74,.12);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0 }
+    html { scroll-behavior: smooth }
+    body {
+      font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      background-image:
+        radial-gradient(ellipse 900px 520px at 0%   0%,  rgba(21,128,61,.11),  transparent 55%),
+        radial-gradient(ellipse 700px 400px at 100% 8%,  rgba(22,163,74,.06),  transparent 50%),
+        radial-gradient(ellipse 600px 360px at 50%  98%, rgba(22,101,52,.07),  transparent 55%);
+      color: var(--muted);
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+    }
+
+    a { color: var(--ga); text-decoration: none }
+    a:hover { text-decoration: underline }
+    img { max-width: 100%; height: auto; display: block }
+    strong { color: #D1FAE5; font-weight: 600 }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1.4rem }
+
+    h1,h2,h3,h4 { color: var(--ink); line-height: 1.25 }
+    h1 { font-size: clamp(2rem,5vw,3.1rem); font-weight: 800; letter-spacing: -.4px }
+    h2 { font-size: clamp(1.25rem,2.5vw,1.75rem); font-weight: 700; margin-top: 1.8rem; padding-top: .7rem; border-top: 1px solid var(--line) }
+    h3 { font-size: 1.08rem; font-weight: 700; color: var(--sub) }
+    p,li,td,th { font-size: 1rem; line-height: 1.75 }
+    .lead { font-size: 1.08rem; color: #A7F3D0 }
+
+    /* HERO */
+    header.hero {
+      padding: clamp(2.5rem,6vw,5rem) 0 clamp(2rem,4vw,3.5rem);
+      border-bottom: 1px solid var(--line);
+    }
+    .hero-card {
+      background: rgba(21,128,61,.05);
+      border: 1px solid var(--lg);
+      border-radius: var(--rl);
+      padding: clamp(1.4rem,3.5vw,2.4rem);
+      box-shadow: var(--sh), var(--shg);
+      position: relative; overflow: hidden;
+    }
+    .hero-card::after {
+      content: '';
+      position: absolute; top: 0; left: 10%; right: 10%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(74,222,128,.48), transparent);
+    }
+
+    .brand-row { display: flex; align-items: center; gap: .9rem; margin-bottom: 1rem }
+    .brand-logo {
+      width: 54px; height: 54px; border-radius: 13px;
+      border: 1px solid rgba(22,163,74,.26);
+      background: rgba(21,128,61,.10);
+      padding: .3rem; object-fit: contain;
+      box-shadow: 0 4px 14px rgba(22,163,74,.18);
+      flex: 0 0 auto;
+    }
+    .brand-label { color: var(--dim); font-size: .85rem; font-weight: 600; text-transform: uppercase; letter-spacing: .4px }
+    .brand-sub   { color: var(--muted); font-size: .85rem }
+
+    /* CTA */
+    .cta-center { display: flex; justify-content: center; margin-top: 2rem }
+    .cta {
+      display: inline-flex; align-items: center; gap: .7rem;
+      background: linear-gradient(135deg, #4ADE80 0%, #22C55E 38%, #16A34A 72%, #15803D 100%);
+      color: #052E16;
+      padding: 1.2rem 3rem;
+      border-radius: 16px;
+      font-weight: 900; font-size: 1.15rem; letter-spacing: .15px;
+      box-shadow:
+        0 0 0 1px rgba(74,222,128,.22),
+        0 0 28px rgba(34,197,94,.26),
+        0 8px 22px rgba(22,163,74,.24),
+        0 20px 48px rgba(21,128,61,.20);
+      border: none; cursor: pointer; text-decoration: none;
+      transition: transform .18s, box-shadow .18s, filter .18s;
+    }
+    .cta:hover {
+      transform: translateY(-3px) scale(1.025); filter: brightness(1.07);
+      color: #052E16; text-decoration: none;
+      box-shadow:
+        0 0 0 1px rgba(74,222,128,.38),
+        0 0 40px rgba(34,197,94,.40),
+        0 10px 28px rgba(22,163,74,.34),
+        0 26px 58px rgba(21,128,61,.28);
+    }
+
+    /* NOTE */
+    .note {
+      border-left: 3px solid var(--ga);
+      padding: .8rem 1rem;
+      background: rgba(22,163,74,.07);
+      border-radius: 0 9px 9px 0;
+      color: var(--sub); margin-top: 1rem;
+    }
+
+    /* STEPS */
+    section.step-guide {
+      padding: clamp(2rem,5vw,3.5rem) 0;
+      border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    }
+    .steps { display: grid; gap: var(--gap); grid-template-columns: 1fr }
+    .step {
+      background: var(--card); border: 1px solid var(--line);
+      border-top: 2px solid rgba(74,222,128,.28); border-radius: var(--r);
+      padding: 1.25rem; box-shadow: var(--sh); transition: transform .18s, box-shadow .18s;
+    }
+    .step:hover { transform: translateY(-3px); box-shadow: var(--sh), var(--shg) }
+    .step .icon {
+      width: 44px; height: 44px; border-radius: 9px;
+      display: inline-grid; place-items: center;
+      background: rgba(22,163,74,.11); margin-bottom: .65rem;
+      font-weight: 800; font-size: .95rem; color: var(--ga);
+      border: 1px solid rgba(74,222,128,.22);
+    }
+
+    /* CARD */
+    main { padding-top: .5rem }
+    main .card {
+      background: var(--card); border: 1px solid var(--line);
+      border-radius: var(--r); padding: 1.5rem; margin: 1.2rem 0; box-shadow: var(--sh);
+    }
+    main .card > h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+
+    /* TOC */
+    .toc { border: 1px solid var(--lg); background: rgba(22,163,74,.05); border-radius: var(--r); padding: 1.1rem 1.3rem }
+    .toc strong { color: var(--ink) }
+    .toc ul { margin: .5rem 0 0; padding-left: 1.1rem }
+    .toc li { margin: .28rem 0; font-size: .96rem }
+    .toc a { font-weight: 600 }
+
+    /* GRID */
+    .grid-2 { display: grid; gap: var(--gap); grid-template-columns: 1fr }
+    .callout-grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; margin-top: .8rem }
+    .mini { background: rgba(255,255,255,.02); border: 1px solid var(--line); border-radius: var(--r); padding: 1rem }
+    .mini h3 { margin-bottom: .35rem }
+    .kpi-badges { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .55rem }
+    .kpi-badges span {
+      border: 1px solid rgba(74,222,128,.20); background: rgba(22,163,74,.08);
+      color: var(--sub); padding: .26rem .54rem;
+      border-radius: 999px; font-size: .87rem; font-weight: 600;
+    }
+
+    /* ASSET BADGES */
+    .asset-grid { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: .8rem }
+    .asset {
+      background: rgba(255,255,255,.03); border: 1px solid var(--line);
+      border-radius: 8px; padding: .38rem .75rem;
+      font-size: .9rem; font-weight: 600; color: #CBD5E1;
+    }
+
+    /* TOKO BARS */
+    .toko-bar { display: flex; flex-direction: column; gap: .6rem; margin-top: 1rem }
+    .toko-row { display: flex; align-items: center; gap: .85rem }
+    .toko-label { min-width: 200px; font-size: .92rem; color: #A7F3D0; font-weight: 600 }
+    .toko-track { flex: 1; height: 8px; background: rgba(255,255,255,.07); border-radius: 999px; overflow: hidden }
+    .toko-fill  { height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--ga), var(--g)) }
+    .toko-val   { min-width: 60px; text-align: right; font-size: .9rem; font-weight: 700; color: var(--ga) }
+
+    /* TABLE */
+    .table-wrap { overflow-x: auto; border-radius: var(--r); border: 1px solid var(--line) }
+    table { width: 100%; border-collapse: collapse; min-width: 480px }
+    th,td { padding: .8rem .95rem; border-bottom: 1px solid var(--line); text-align: left }
+    th { background: rgba(22,163,74,.07); color: var(--ink); font-weight: 700; font-size: .93rem }
+    tr.hi { background: rgba(22,163,74,.04) }
+    tr:hover td { background: rgba(255,255,255,.018) }
+    tr:last-child td { border-bottom: none }
+    .ok { color: var(--ok) } .warn { color: var(--warn) } .err { color: var(--err) }
+
+    /* EEAT */
+    .eeat { background: var(--card); border: 1px solid var(--lg); border-radius: var(--r); padding: 1.5rem; box-shadow: var(--sh) }
+    .eeat > h2:first-child { margin-top: 0; border-top: none; padding-top: 0 }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid var(--line); padding: .9rem 0 }
+    .faq-item:last-child { border-bottom: none }
+    .faq-button { all: unset; display: flex; justify-content: space-between; align-items: flex-start; width: 100%; cursor: pointer; gap: 1rem }
+    .faq-button:focus-visible { outline: 2px solid var(--ga); border-radius: 4px }
+    .faq-button h3 { margin: 0; font-weight: 700; font-size: 1rem; line-height: 1.4 }
+    .faq-content { max-height: 0; overflow: hidden; transition: max-height .26s ease }
+    .faq-content.open { padding-top: .65rem }
+    .faq-plus { font-weight: 800; font-size: 1.35rem; color: var(--ga); flex: 0 0 auto; line-height: 1; transition: transform .2s }
+    .faq-button[aria-expanded="true"] .faq-plus { transform: rotate(45deg) }
+
+    @media(min-width:860px){
+      .steps { grid-template-columns: repeat(4,1fr) }
+      .grid-2 { grid-template-columns: 1fr 1fr }
+      .callout-grid { grid-template-columns: 1fr 1fr }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HERO -->
+<header class="hero" role="banner">
+  <div class="container">
+    <div class="hero-card">
+      <div class="brand-row">
+        <img class="brand-logo" src="lid.png" alt="Carbon Staking logo">
+        <div>
+          <div class="brand-label">Complete Staking Guide</div>
+          <div class="brand-sub">Multi-Asset Staking · APY Mechanics · Validator Selection · Rewards · Safety</div>
+        </div>
+      </div>
+
+      <h1>Carbon Staking</h1>
+      <p class="lead" style="margin-top:.7rem">
+        The complete guide to <strong>Carbon Staking</strong> — a multi-asset staking platform
+        that lets holders of <strong>SWTH, ETH, BTC, and other supported assets</strong>
+        earn staking rewards through Carbon's <strong>proof-of-stake consensus</strong>
+        and liquidity incentive programmes. Understand how
+        <strong>Carbon's validator network</strong> works, how
+        <strong>staking rewards</strong> are calculated and distributed,
+        how to <strong>delegate SWTH</strong> to validators,
+        what <strong>liquidity staking</strong> unlocks in the Carbon DeFi ecosystem,
+        and how to manage staking <strong>safely and efficiently</strong>.
+      </p>
+
+      <div class="cta-center">
+        <a href="#" class="cta" aria-label="Open Carbon Staking App">
+          <span>◈</span> Start Staking on Carbon
+        </a>
+      </div>
+
+      <div class="note">
+        <strong>What Carbon is:</strong> Carbon is a cross-chain DeFi layer built on Cosmos SDK,
+        powering perpetual futures, spot trading, and liquidity pools across multiple blockchains.
+        Staking SWTH secures the Carbon network and earns a share of protocol trading fees —
+        real yield from actual DeFi activity, not pure inflation.
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- STEPS -->
+<section class="step-guide" aria-labelledby="how-works">
+  <div class="container">
+    <h2 id="how-works" style="margin-top:0;border-top:none;padding-top:0">
+      How Carbon Staking Works: Acquire → Delegate → Earn → Compound
+    </h2>
+    <div class="steps" role="list">
+      <article class="step" role="listitem">
+        <div class="icon">01</div>
+        <h3>Acquire SWTH tokens</h3>
+        <p>SWTH is Carbon's native token used for staking, governance, and fee payment. Acquire SWTH on Carbon's native DEX or compatible external exchanges before delegating to validators on the Carbon chain.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">02</div>
+        <h3>Delegate to a validator</h3>
+        <p>Choose a validator from Carbon's active validator set and delegate your SWTH. Your stake backs that validator's consensus participation and earns a proportional share of their block rewards and trading fee income.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">03</div>
+        <h3>Earn rewards continuously</h3>
+        <p>Staking rewards accrue every block — a combination of SWTH inflation rewards and a share of Carbon's trading fees from perpetuals, spot markets, and liquidity pools. Rewards must be claimed manually or set to auto-compound.</p>
+      </article>
+      <article class="step" role="listitem">
+        <div class="icon">04</div>
+        <h3>Compound or participate in governance</h3>
+        <p>Claimed SWTH can be re-staked to compound yield, used for governance voting on protocol proposals, or deployed in Carbon's DeFi ecosystem for additional yield opportunities beyond base staking rewards.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="container" role="main">
+
+  <!-- TOC -->
+  <section class="card toc" aria-label="Table of Contents">
+    <strong>On this page — Carbon Staking:</strong>
+    <ul>
+      <li><a href="#overview">What is Carbon and why stake SWTH</a></li>
+      <li><a href="#rewards">Carbon staking rewards: sources, calculation, and real yield</a></li>
+      <li><a href="#validators">Validators on Carbon: how to choose and what to check</a></li>
+      <li><a href="#swth">SWTH token: utility, tokenomics, and staking mechanics</a></li>
+      <li><a href="#unbonding">Unbonding period: liquidity planning for SWTH stakers</a></li>
+      <li><a href="#lp-staking">Liquidity staking: earning beyond base SWTH delegation</a></li>
+      <li><a href="#how-to">How to stake SWTH on Carbon: step-by-step guide</a></li>
+      <li><a href="#governance">Carbon governance: how stakers vote on protocol decisions</a></li>
+      <li><a href="#safety">Carbon staking risks: slashing, smart-contract, and market risks</a></li>
+      <li><a href="#comparison">Carbon staking vs other Cosmos chain staking options</a></li>
+      <li><a href="#best-practices">Best practices for Carbon stakers</a></li>
+      <li><a href="#troubleshooting">Troubleshooting: missing rewards, unbonding issues, validator concerns</a></li>
+      <li><a href="#eeat">Authoritative sources &amp; references</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+  </section>
+
+  <!-- OVERVIEW -->
+  <section class="card" id="overview">
+    <h2>What Is Carbon and Why Stake SWTH?</h2>
+    <p>
+      <strong>Carbon</strong> (formerly Switcheo) is a Cosmos SDK-based blockchain purpose-built
+      for decentralised derivatives and cross-chain DeFi. It operates a native order book for
+      perpetual futures, a spot DEX, and cross-chain liquidity pools connecting Ethereum,
+      BNB Chain, Zilliqa, and other networks.
+    </p>
+    <p>
+      <strong>Staking SWTH</strong> serves two purposes simultaneously: it secures Carbon's
+      proof-of-stake consensus layer (validators need delegated stake to participate in block
+      production) and it earns stakers a share of the protocol's real DeFi revenue —
+      trading fees from perpetuals, spot markets, and liquidity pools that flow back
+      to the validator-staker ecosystem.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>Real yield component</h3>
+        <p style="color:var(--muted)">Unlike pure-inflation staking protocols, Carbon's rewards include actual trading fee revenue from DeFi activity. As platform volume grows, the fee component of staking yield grows with it — aligning staker incentives with protocol growth.</p>
+        <div class="kpi-badges"><span>Trading fees</span><span>Real yield</span><span>Volume-linked</span></div>
+      </div>
+      <div class="mini">
+        <h3>Network security role</h3>
+        <p style="color:var(--muted)">Delegated SWTH backs validator consensus participation on Carbon Chain. A healthy, well-distributed stake set is essential for the chain's censorship resistance and settlement finality for the DeFi protocols running on top of it.</p>
+        <div class="kpi-badges"><span>Consensus security</span><span>Decentralisation</span><span>Finality</span></div>
+      </div>
+      <div class="mini">
+        <h3>Governance rights</h3>
+        <p style="color:var(--muted)">Staked SWTH gives holders proportional voting power in Carbon's on-chain governance — protocol upgrades, fee parameter changes, new asset listings, and treasury decisions all go through staker governance.</p>
+        <div class="kpi-badges"><span>On-chain voting</span><span>Protocol direction</span><span>Treasury</span></div>
+      </div>
+      <div class="mini">
+        <h3>DeFi composability</h3>
+        <p style="color:var(--muted)">Carbon's staking reward SWTH can be re-deployed into Carbon's own DeFi ecosystem — liquidity pools, perpetual margin positions, and cross-chain yield strategies — creating stacked yield opportunities for active participants.</p>
+        <div class="kpi-badges"><span>Re-deployable</span><span>Compoundable</span><span>DeFi ecosystem</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REWARDS -->
+  <section class="card" id="rewards">
+    <h2>Carbon Staking Rewards: Sources, How APY Is Calculated, and Real Yield</h2>
+    <p>
+      Carbon staking rewards come from two distinct sources — understanding both helps
+      you evaluate actual yield versus headline APY figures.
+    </p>
+
+    <div class="table-wrap">
+      <table aria-label="Reward sources">
+        <thead>
+          <tr><th>Reward source</th><th>Mechanism</th><th>Variability</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>SWTH inflation rewards</td>
+            <td>Newly minted SWTH distributed to validators and delegators each block</td>
+            <td class="warn">Dilutive — depends on total staked supply and inflation rate</td>
+          </tr>
+          <tr>
+            <td>Trading fee revenue</td>
+            <td>A portion of perpetuals, spot, and liquidity pool fees flows to stakers</td>
+            <td class="ok">Volume-driven — grows with platform trading activity</td>
+          </tr>
+          <tr class="hi">
+            <td>Validator commission share</td>
+            <td>Your net reward is the gross reward minus your chosen validator's commission rate</td>
+            <td class="warn">Varies by validator — compare commission before delegating</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Inflation vs real yield distinction:</strong> Pure inflation staking rewards
+      dilute all SWTH holders proportionally — staking just keeps pace with dilution.
+      The trading fee component is genuinely additive: it represents new value entering
+      the system from external trading activity. Track the fee:inflation ratio in Carbon's
+      official dashboard to assess how much of your yield is "real" vs inflationary.
+    </div>
+
+    <!-- APY visual -->
+    <div class="toko-bar" role="list" aria-label="Reward composition breakdown">
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Base inflation rewards</span>
+        <div class="toko-track"><div class="toko-fill" style="width:60%"></div></div>
+        <span class="toko-val">~60% of APY</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Trading fee revenue</span>
+        <div class="toko-track"><div class="toko-fill" style="width:30%"></div></div>
+        <span class="toko-val">~30% of APY</span>
+      </div>
+      <div class="toko-row" role="listitem">
+        <span class="toko-label">Liquidity incentives</span>
+        <div class="toko-track"><div class="toko-fill" style="width:10%"></div></div>
+        <span class="toko-val">~10% of APY</span>
+      </div>
+    </div>
+    <p style="font-size:.88rem; color:var(--dim); margin-top:.6rem">Indicative breakdown — actual composition varies with platform volume and staking participation rate.</p>
+  </section>
+
+  <!-- VALIDATORS -->
+  <section class="card" id="validators">
+    <h2>Validators on Carbon: How to Choose the Right One and What to Check</h2>
+    <p>
+      Carbon uses Tendermint BFT consensus — a small set of active validators
+      (typically 21–50) are elected each round based on total delegated stake.
+      Your validator choice directly affects your net reward and your
+      exposure to slashing risk.
+    </p>
+
+    <div class="table-wrap">
+      <table aria-label="Validator selection criteria">
+        <thead>
+          <tr><th>Criterion</th><th>What to look for</th><th>Red flag</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Commission rate</td>
+            <td>5–10% is typical for reputable validators</td>
+            <td>0% commission may indicate unsustainable practices or imminent rate increase</td>
+          </tr>
+          <tr>
+            <td>Uptime / voting power</td>
+            <td>99%+ uptime — consistently in active validator set</td>
+            <td>Frequent jailing or missing blocks = reduced rewards and slashing risk</td>
+          </tr>
+          <tr class="hi">
+            <td>Self-bond amount</td>
+            <td>Validators with meaningful self-bond have skin in the game</td>
+            <td>Zero or near-zero self-bond = less aligned with avoiding slashing</td>
+          </tr>
+          <tr>
+            <td>Governance participation</td>
+            <td>Votes on proposals — engaged validators support network health</td>
+            <td>Never voting on proposals suggests disengaged operation</td>
+          </tr>
+          <tr class="hi">
+            <td>Public identity</td>
+            <td>Known team, website, social presence — accountable to community</td>
+            <td>Anonymous validators with no public identity are harder to hold accountable</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note">
+      <strong>Decentralise your delegation:</strong> For significant SWTH positions,
+      consider splitting stake across 2–3 validators rather than concentrating
+      in one. This reduces exposure to any single validator's slashing event
+      and supports broader network decentralisation.
+    </div>
+  </section>
+
+  <!-- SWTH TOKEN -->
+  <section class="card" id="swth">
+    <h2>SWTH Token: Utility, Tokenomics, and How Staking Mechanics Work</h2>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>SWTH utility</h3>
+        <p style="color:var(--muted)">SWTH is Carbon's native token used for staking (securing consensus), governance (voting on proposals), fee payment (gas on Carbon Chain), and liquidity mining incentives across Carbon's DeFi products.</p>
+        <div class="kpi-badges"><span>Staking</span><span>Governance</span><span>Gas fees</span><span>LP rewards</span></div>
+      </div>
+      <div class="mini">
+        <h3>Staking mechanics</h3>
+        <p style="color:var(--muted)">SWTH staking follows the standard Cosmos SDK delegation model: choose a validator, delegate any amount, earn rewards each block. Rewards accrue in the SWTH rewards pool and must be claimed — they do not auto-compound by default without a manual restake or automation tool.</p>
+        <div class="kpi-badges"><span>Cosmos SDK</span><span>Manual claim</span><span>No auto-compound</span></div>
+      </div>
+    </div>
+
+    <div class="table-wrap" style="margin-top:1rem">
+      <table aria-label="SWTH staking parameters">
+        <thead>
+          <tr><th>Parameter</th><th>Value</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Unbonding period</td>
+            <td>30 days</td>
+            <td>Standard Cosmos SDK — stake illiquid during unbonding</td>
+          </tr>
+          <tr>
+            <td>Minimum delegation</td>
+            <td>No minimum enforced</td>
+            <td>Any SWTH amount can be delegated</td>
+          </tr>
+          <tr class="hi">
+            <td>Max validators</td>
+            <td>Governance-set active set</td>
+            <td>Only top validators by stake are active each block</td>
+          </tr>
+          <tr>
+            <td>Slashing — double sign</td>
+            <td>5% of validator + delegator stake</td>
+            <td>Severe — delegators share the penalty</td>
+          </tr>
+          <tr class="hi">
+            <td>Slashing — downtime</td>
+            <td>Small % + jailing</td>
+            <td>Temporary exclusion from active set; rewards pause while jailed</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- UNBONDING -->
+  <section class="card" id="unbonding">
+    <h2>Unbonding Period: Liquidity Planning for Carbon SWTH Stakers</h2>
+    <p>
+      After initiating undelegation of your SWTH, a <strong>30-day unbonding period</strong>
+      begins before your tokens return to your liquid balance. During this window,
+      your SWTH earns no staking rewards and cannot be traded, transferred, or used
+      in DeFi applications.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>Why the 30-day unbonding exists</h3>
+        <p style="color:var(--muted)">The unbonding delay is a security mechanism: it ensures that if a validator commits a slashable offence, the protocol has time to detect, report, and slash the stake before the tokens become liquid. Without it, validators could act maliciously and immediately unstake to avoid penalties.</p>
+        <div class="kpi-badges"><span>Security mechanism</span><span>Slashing window</span></div>
+      </div>
+      <div class="mini">
+        <h3>Planning around unbonding</h3>
+        <p style="color:var(--muted)">Never stake SWTH you may need within 30 days. Market volatility, DeFi opportunities, or unexpected liquidity needs cannot override the unbonding schedule. Calculate the USD value at risk if SWTH price moves significantly during a 30-day unbonding period before committing.</p>
+        <div class="kpi-badges"><span>30-day minimum</span><span>No override</span><span>Plan in advance</span></div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Re-delegation vs unbonding:</strong> You can instantly move stake from one validator
+      to another (re-delegation) without waiting through the unbonding period —
+      but re-delegation is subject to a cooldown before you can re-delegate again
+      from the same source validator. Use re-delegation to switch validators;
+      use unbonding only when you need liquid SWTH.
+    </div>
+  </section>
+
+  <!-- LP STAKING -->
+  <section class="card" id="lp-staking">
+    <h2>Liquidity Staking on Carbon: Earning Beyond Base SWTH Delegation</h2>
+    <p>
+      Beyond delegating SWTH to validators, Carbon offers liquidity incentive programmes
+      where LPs in Carbon's pools can stake their LP tokens to earn additional
+      SWTH emissions on top of trading fee income.
+    </p>
+
+    <div class="table-wrap">
+      <table aria-label="Staking yield layers">
+        <thead>
+          <tr><th>Yield layer</th><th>How earned</th><th>Risk level</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>SWTH validator delegation</td>
+            <td>Delegate SWTH to a validator — earn inflation + fee share</td>
+            <td class="warn">Slashing risk (via validator) + 30-day unbonding</td>
+          </tr>
+          <tr>
+            <td>Liquidity pool fees</td>
+            <td>Provide liquidity to Carbon DEX pools — earn trading fees</td>
+            <td class="warn">Impermanent loss + smart-contract risk</td>
+          </tr>
+          <tr class="hi">
+            <td>LP token staking (SWTH rewards)</td>
+            <td>Stake Carbon LP tokens to earn additional SWTH emissions</td>
+            <td class="warn">Emission rate may change; adds smart-contract layer</td>
+          </tr>
+          <tr>
+            <td>Perpetual fee sharing</td>
+            <td>Hold staked SWTH to earn share of perpetuals trading fees</td>
+            <td class="ok">Indirect — flows through validator delegation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- HOW TO -->
+  <section class="card" id="how-to">
+    <h2>How to Stake SWTH on Carbon: Step-by-Step Guide</h2>
+    <ol style="padding-left:1.3rem">
+      <li style="margin-bottom:.6rem"><strong>Set up a Carbon-compatible wallet</strong> — Carbon is a Cosmos SDK chain. Use Keplr, Leap, or the Carbon native wallet. Add the Carbon network to your Cosmos wallet.</li>
+      <li style="margin-bottom:.6rem"><strong>Acquire SWTH tokens</strong> — buy SWTH on Carbon's native DEX, a compatible CEX, or bridge from another chain using Carbon's bridge interface. Ensure you have a small SWTH buffer for gas fees.</li>
+      <li style="margin-bottom:.6rem"><strong>Navigate to the staking section</strong> of the official Carbon app — use a bookmarked URL and verify the domain before connecting your wallet.</li>
+      <li style="margin-bottom:.6rem"><strong>Review the validator list</strong> — compare commission rates, uptime scores, and self-bond amounts. Select 1–3 validators that meet your criteria.</li>
+      <li style="margin-bottom:.6rem"><strong>Delegate your SWTH</strong> — enter the amount to delegate to your chosen validator and confirm the delegation transaction. A small SWTH gas fee applies.</li>
+      <li style="margin-bottom:.6rem"><strong>Monitor rewards accrual</strong> — rewards appear in your staking dashboard as they accumulate each block. Check periodically for pending reward balances.</li>
+      <li style="margin-bottom:.6rem"><strong>Claim and optionally restake rewards</strong> — manually claim your accumulated SWTH rewards from the dashboard. For compounding, re-delegate the claimed SWTH immediately after claiming.</li>
+      <li><strong>To exit: initiate unbonding</strong> — when you want to stop staking, initiate undelegation. The 30-day unbonding period begins and SWTH returns to your liquid balance after completion.</li>
+    </ol>
+
+    <div class="note">
+      <strong>Compounding tip:</strong> SWTH rewards do not auto-compound on Carbon.
+      To maximise effective APY, claim and re-delegate rewards regularly.
+      The optimal compounding frequency depends on your position size relative to
+      gas cost per claim — larger positions benefit from more frequent compounding.
+    </div>
+  </section>
+
+  <!-- GOVERNANCE -->
+  <section class="card" id="governance">
+    <h2>Carbon Governance: How SWTH Stakers Vote on Protocol Decisions</h2>
+    <p>
+      Carbon uses Cosmos SDK on-chain governance — staked SWTH holders vote on
+      proposals that shape the protocol's development, fee structure, and ecosystem direction.
+    </p>
+
+    <div class="callout-grid">
+      <div class="mini">
+        <h3>What governance controls</h3>
+        <p style="color:var(--muted)">Protocol parameter changes, new asset listings on Carbon's DEX, fee rate adjustments, chain upgrades, and community treasury disbursements are all subject to governance votes. Active governance participation is how SWTH stakers exercise meaningful influence over Carbon's future.</p>
+        <div class="kpi-badges"><span>Fee parameters</span><span>Asset listings</span><span>Chain upgrades</span><span>Treasury</span></div>
+      </div>
+      <div class="mini">
+        <h3>Voting mechanics</h3>
+        <p style="color:var(--muted)">Voting power is proportional to staked SWTH. If you don't vote directly, your validator votes on your behalf — but you can always override this with your own vote. Monitor active proposals in the official Carbon governance portal and exercise your vote independently on consequential decisions.</p>
+        <div class="kpi-badges"><span>Stake-weighted</span><span>Override possible</span><span>Validator default</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SAFETY -->
+  <section class="card" id="safety">
+    <h2>Carbon Staking Risks: Slashing, Smart-Contract, and Market Risks</h2>
+
+    <div class="table-wrap">
+      <table aria-label="Risk analysis">
+        <thead>
+          <tr><th>Risk</th><th>Level</th><th>Mitigation</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Validator slashing (double-sign)</td>
+            <td class="err">High impact — 5% of stake</td>
+            <td>Choose reputable validators with proven uptime; diversify across 2–3 validators</td>
+          </tr>
+          <tr>
+            <td>Validator slashing (downtime)</td>
+            <td class="warn">Low-Medium — small % + jailing</td>
+            <td>Monitor validator uptime; re-delegate away from consistently underperforming validators</td>
+          </tr>
+          <tr class="hi">
+            <td>30-day unbonding illiquidity</td>
+            <td class="warn">Medium</td>
+            <td>Only stake SWTH with a 30-day+ time horizon; maintain liquid reserve outside staking</td>
+          </tr>
+          <tr>
+            <td>SWTH price risk</td>
+            <td class="warn">Medium-High</td>
+            <td>Staking rewards are denominated in SWTH — falling price reduces USD yield; assess exposure carefully</td>
+          </tr>
+          <tr class="hi">
+            <td>Smart-contract risk (Carbon Chain)</td>
+            <td class="warn">Medium</td>
+            <td>Carbon has been audited; Cosmos SDK is battle-tested. Ongoing vigilance required for chain upgrades</td>
+          </tr>
+          <tr>
+            <td>Phishing / fake Carbon app</td>
+            <td class="err">High (user-controlled)</td>
+            <td>Bookmark official URL; verify domain before every wallet connection</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- COMPARISON -->
+  <section class="card" id="comparison">
+    <h2>Carbon Staking vs Other Cosmos Chain Staking Options</h2>
+
+    <div class="table-wrap">
+      <table aria-label="Cosmos staking comparison">
+        <thead>
+          <tr><th>Feature</th><th>Carbon (SWTH)</th><th>Cosmos Hub (ATOM)</th><th>Osmosis (OSMO)</th><th>dYdX Chain (DYDX)</th></tr>
+        </thead>
+        <tbody>
+          <tr class="hi">
+            <td>Primary protocol</td>
+            <td>Cross-chain DeFi (perps + spot)</td>
+            <td>Interchain security hub</td>
+            <td>Cosmos DEX / liquidity</td>
+            <td>Perpetuals DEX</td>
+          </tr>
+          <tr>
+            <td>Real yield (trading fees)</td>
+            <td class="ok">Yes — perps + spot fees</td>
+            <td class="warn">Limited — mostly inflation</td>
+            <td class="warn">Some — swap fee share</td>
+            <td class="ok">Yes — 100% fees to stakers (USDC)</td>
+          </tr>
+          <tr class="hi">
+            <td>Reward currency</td>
+            <td>SWTH</td>
+            <td>ATOM</td>
+            <td>OSMO</td>
+            <td class="ok">USDC (stable)</td>
+          </tr>
+          <tr>
+            <td>Unbonding period</td>
+            <td>30 days</td>
+            <td>21 days</td>
+            <td>14 days</td>
+            <td>30 days</td>
+          </tr>
+          <tr class="hi">
+            <td>DeFi composability</td>
+            <td class="ok">Native DeFi ecosystem</td>
+            <td class="warn">Limited native DeFi</td>
+            <td class="ok">Deep DeFi ecosystem</td>
+            <td class="ok">Perpetuals-focused</td>
+          </tr>
+          <tr>
+            <td>Slashing risk</td>
+            <td class="warn">5% double-sign</td>
+            <td class="warn">5% double-sign</td>
+            <td class="warn">0.01–5% depending</td>
+            <td class="warn">Cosmos standard</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note" style="margin-top:1rem">
+      <strong>Carbon's differentiator:</strong> The combination of perpetuals fee revenue and
+      a native DeFi ecosystem for compounding rewards makes Carbon staking more yield-diverse
+      than pure governance chains like Cosmos Hub. For stakers who want real yield exposure
+      to derivatives trading volume without the complexity of dYdX's Cosmos chain setup,
+      Carbon offers a viable middle ground.
+    </div>
+  </section>
+
+  <!-- BEST PRACTICES -->
+  <section class="card" id="best-practices">
+    <h2>Best Practices for Carbon SWTH Stakers</h2>
+    <ul style="padding-left:1.2rem">
+      <li style="margin-bottom:.5rem"><strong>Verify your validator's current commission rate</strong> before delegating — rates can change and the validator you chose 6 months ago may have increased their commission significantly.</li>
+      <li style="margin-bottom:.5rem"><strong>Never stake more than you can afford to have illiquid for 30 days</strong> — the unbonding period is absolute. Market conditions 30 days from now are unknown; size accordingly.</li>
+      <li style="margin-bottom:.5rem"><strong>Compound rewards regularly</strong> — set a calendar reminder to claim and re-delegate rewards. Even monthly compounding significantly improves effective APY on larger positions.</li>
+      <li style="margin-bottom:.5rem"><strong>Monitor validator health</strong> — check your validator's status in the Carbon staking dashboard periodically. A validator that gets jailed stops earning rewards for your delegation until they're released.</li>
+      <li style="margin-bottom:.5rem"><strong>Use re-delegation instead of unbonding</strong> when switching validators — re-delegation is instant (subject to re-delegation cooldown); unbonding wastes 30 days of earning potential.</li>
+      <li style="margin-bottom:.5rem"><strong>Keep a small liquid SWTH reserve</strong> for gas — staking actions (claim, delegate, undelegate) all require SWTH gas. Never stake 100% of your SWTH or you'll be unable to execute on-chain actions.</li>
+      <li><strong>Bookmark the official Carbon staking URL</strong> — verify the domain before every session. Cosmos chain staking apps are targeted by phishing sites because staking actions require wallet signatures.</li>
+    </ul>
+  </section>
+
+  <!-- TROUBLESHOOTING -->
+  <section class="card" id="troubleshooting">
+    <h2>Troubleshooting Carbon Staking: Missing Rewards, Unbonding Issues, and Validator Concerns</h2>
+
+    <h3>"My staking rewards aren't showing in my wallet"</h3>
+    <ul style="padding-left:1.2rem">
+      <li>Cosmos SDK staking rewards must be manually claimed — they do not auto-transfer to your wallet. Visit the Carbon staking dashboard and claim your pending rewards explicitly.</li>
+      <li>Confirm your validator is currently active (not jailed) — a jailed validator earns zero rewards for all delegators until it's unjailed. Check validator status in the Carbon explorer.</li>
+      <li>Very small reward amounts may not be visible until they accumulate above a display threshold. Use the official Carbon explorer to verify the exact on-chain pending reward balance for your address.</li>
+    </ul>
+
+    <h3>"My unbonding seems to be taking longer than 30 days"</h3>
+    <ul style="padding-left:1.2rem">
+      <li>Verify the unbonding start time — the 30-day clock starts from when the undelegation transaction was confirmed on-chain, not when you submitted it. Check the exact start time in the Carbon explorer.</li>
+      <li>Governance can change unbonding parameters via proposals — check Carbon governance for any recently passed changes to unbonding duration before contacting support.</li>
+    </ul>
+
+    <h3>"My validator was jailed — what happens to my stake?"</h3>
+    <ul style="padding-left:1.2rem">
+      <li>Jailing (for downtime) pauses rewards but does not slash stake — your SWTH is intact. Once the validator is unjailed, rewards resume. You can use re-delegation to move stake to an active validator immediately without waiting.</li>
+      <li>If the jailing was for double-signing, a 5% slash occurs on all delegated stake including yours. Monitor the Carbon governance and explorer for slash event notifications.</li>
+    </ul>
+
+    <div class="note">
+      <strong>On-chain is ground truth:</strong> Use the official Carbon block explorer for
+      authoritative delegation status, reward accrual, and validator state.
+      The staking UI may lag slightly behind on-chain state during network activity spikes.
+    </div>
+  </section>
+
+  <!-- EEAT -->
+  <section class="eeat" id="eeat" aria-labelledby="eeat-title">
+    <h2 id="eeat-title">Carbon Staking: Authoritative References &amp; External Sources</h2>
+
+    <h3>Carbon — Official Sources</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://carbon.network/" target="_blank" rel="noopener nofollow">Carbon Network — Official Website</a></li>
+      <li><a href="https://app.carbon.network/" target="_blank" rel="noopener nofollow">Carbon — Official App &amp; Staking Dashboard</a></li>
+      <li><a href="https://docs.carbon.network/" target="_blank" rel="noopener nofollow">Carbon — Official Documentation</a></li>
+      <li><a href="https://github.com/Switcheo" target="_blank" rel="noopener nofollow">Carbon / Switcheo — GitHub</a></li>
+    </ul>
+
+    <h3>Cosmos Staking Context</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://cosmos.network/learn/staking" target="_blank" rel="noopener nofollow">Cosmos Network — Staking Guide</a></li>
+      <li><a href="https://www.mintscan.io/" target="_blank" rel="noopener nofollow">Mintscan — Cosmos Chain Explorer</a></li>
+      <li><a href="https://www.stakingrewards.com/" target="_blank" rel="noopener nofollow">Staking Rewards — Cross-Chain APY Data</a></li>
+    </ul>
+
+    <h3>DeFi Data &amp; Security</h3>
+    <ul style="padding-left:1.2rem">
+      <li><a href="https://defillama.com/protocol/carbon" target="_blank" rel="noopener nofollow">DeFiLlama — Carbon TVL &amp; Protocol Data</a></li>
+      <li><a href="https://revoke.cash/" target="_blank" rel="noopener nofollow">Revoke.cash — Token Approval Manager</a></li>
+      <li><a href="https://koinly.io/guides/crypto-staking-taxes/" target="_blank" rel="noopener nofollow">Koinly — Crypto Staking Tax Guide</a></li>
+    </ul>
+
+    <div class="note" style="margin-top:1.2rem">
+      <strong>About:</strong> Prepared by Crypto Finance Experts as a practical, SEO-oriented knowledge base for
+      <em>Carbon Staking</em>: SWTH delegation, reward sources, validator selection, unbonding, governance, LP staking, security, and troubleshooting.
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card" id="faq" aria-labelledby="faq-title">
+    <h2 id="faq-title" style="margin-top:0;border-top:none;padding-top:0">Carbon Staking: Frequently Asked Questions</h2>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f1" id="b1">
+        <h3>What is Carbon and why should I stake SWTH?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f1" class="faq-content" role="region" aria-labelledby="b1">
+        <p>Carbon is a Cosmos SDK blockchain purpose-built for decentralised derivatives and cross-chain DeFi — hosting a perpetuals DEX, spot trading, and liquidity pools. Staking SWTH secures Carbon's proof-of-stake consensus while earning a combination of inflation rewards and real trading fee revenue from the protocol's DeFi activity. It's one of the few Cosmos chains where staking yield includes genuine fee revenue from active financial markets.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f2" id="b2">
+        <h3>How long is the Carbon SWTH unbonding period?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f2" class="faq-content" role="region" aria-labelledby="b2">
+        <p>The SWTH unbonding period is 30 days. After you initiate undelegation, your SWTH is neither earning rewards nor available to transfer for the full 30 days. This is a security mechanism protecting against validator misbehaviour. Plan your liquidity around this constraint — never stake SWTH you may need within a 30-day window. Re-delegation to a different validator is instant (subject to cooldown) and doesn't require unbonding.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f3" id="b3">
+        <h3>What is the difference between inflation rewards and real yield on Carbon?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f3" class="faq-content" role="region" aria-labelledby="b3">
+        <p>Inflation rewards are newly minted SWTH distributed to stakers — they dilute all SWTH holders proportionally, so staking just maintains your relative share of supply. Real yield comes from Carbon's trading fee revenue: perpetuals, spot, and liquidity pool fees that flow to the staker ecosystem. Real yield is genuinely additive — it represents external value captured by the protocol from trading activity. As Carbon's platform volumes grow, the real yield component grows relative to pure inflation.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f4" id="b4">
+        <h3>Can I lose my staked SWTH?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f4" class="faq-content" role="region" aria-labelledby="b4">
+        <p>Yes — if your chosen validator commits a slashable offence. Double-signing results in a 5% slash of all staked and delegated SWTH. Downtime results in a small penalty and jailing. Delegators share slashing risk with their chosen validator. To mitigate: choose reputable validators with proven uptime, monitor validator health, and diversify across 2–3 validators for significant positions. SWTH price risk is an additional market risk separate from slashing.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f5" id="b5">
+        <h3>How do I compound my Carbon staking rewards?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f5" class="faq-content" role="region" aria-labelledby="b5">
+        <p>SWTH staking rewards don't auto-compound. To compound: (1) claim your pending SWTH rewards from the staking dashboard, (2) immediately re-delegate the claimed amount to your chosen validator. This adds the claimed rewards to your staking principal, increasing future reward accrual. The optimal compounding frequency depends on position size — gas costs make very frequent compounding inefficient for small positions, while large positions benefit from weekly or even daily compounding.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f6" id="b6">
+        <h3>What happens if my validator gets jailed?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f6" class="faq-content" role="region" aria-labelledby="b6">
+        <p>If jailed for downtime: your rewards pause but stake is not slashed. You can immediately re-delegate to a different active validator without waiting. Once unjailed, rewards resume if you stay delegated. If jailed for double-signing: 5% of your delegated stake is slashed before jailing occurs. This is why validator selection quality matters — a jailing for double-signing cannot be avoided once it occurs, only mitigated through diversification across multiple validators.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f7" id="b7">
+        <h3>What wallet do I need to stake SWTH on Carbon?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f7" class="faq-content" role="region" aria-labelledby="b7">
+        <p>Carbon is a Cosmos SDK chain, so you need a Cosmos-compatible wallet. Keplr and Leap both support Carbon chain natively. The Carbon official app also has a built-in wallet interface. MetaMask alone does not support Carbon mainnet. For security, Ledger hardware wallets with the Cosmos app support Carbon for cold storage of SWTH while still enabling staking through compatible wallet frontends.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f8" id="b8">
+        <h3>Are Carbon staking rewards taxable?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f8" class="faq-content" role="region" aria-labelledby="b8">
+        <p>In most jurisdictions (US, UK, EU), staking rewards received are treated as ordinary income at their fair market value at the time of receipt. Additionally, any subsequent sale or trade of SWTH may trigger capital gains tax. Tax treatment varies by jurisdiction and is evolving — consult a qualified crypto tax professional for advice specific to your situation. This guide does not constitute tax advice.</p>
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <button class="faq-button" aria-expanded="false" aria-controls="f9" id="b9">
+        <h3>How does Carbon staking compare to other Cosmos chain staking?</h3><span class="faq-plus">+</span>
+      </button>
+      <div id="f9" class="faq-content" role="region" aria-labelledby="b9">
+        <p>Carbon differentiates through real yield: unlike pure governance chains where rewards are mostly inflation, Carbon's staking earns a share of actual DeFi trading revenue from its perpetuals and spot markets. The 30-day unbonding is longer than Cosmos Hub (21 days) and Osmosis (14 days), but the reward structure is more diversified. Compared to dYdX Chain, Carbon rewards in SWTH (not stablecoins) — which means price exposure on rewards, but also potential upside if SWTH appreciates alongside platform growth.</p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<footer class="container" role="contentinfo" style="padding:2.5rem 0; border-top:1px solid var(--line); margin-top:2rem">
+  <p style="color:var(--dim); font-size:.93rem">© 2026 Carbon Staking Guide. Educational content with a security-first operational focus. Not financial or tax advice.</p>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const isOpen = btn.getAttribute('aria-expanded') === 'true';
+      document.querySelectorAll('.faq-button').forEach(b => {
+        b.setAttribute('aria-expanded', 'false');
+        const c = document.getElementById(b.getAttribute('aria-controls'));
+        c.classList.remove('open'); c.style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        btn.setAttribute('aria-expanded', 'true');
+        const content = document.getElementById(btn.getAttribute('aria-controls'));
+        content.classList.add('open');
+        content.style.maxHeight = content.scrollHeight + 'px';
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
